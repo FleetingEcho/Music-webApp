@@ -74,7 +74,7 @@ function Login (props){
     style={{marginTop:'50px',textAlign:'center'}}
     ><Link to='' onClick={()=>{
       customerLogin(props)
-    }}>Customer (Log in) </Link></h3>
+    }}>Visitor (Log in) </Link></h3>
 
     <Button type="primary" onClick={submitInfo}>
               Login
