@@ -19,10 +19,6 @@ import { faVideo } from '@fortawesome/free-solid-svg-icons';
 import {getCount} from '../../api/utils'
 import { withRouter } from 'react-router-dom';
 let page=1;
-const permanent=1;
-let judge=0;
-const mvList2=[];
-let tabScroll=false;
 function Search(props) {
   const [show, setShow] = useState(false);
   const [query, setQuery] = useState('');
@@ -48,7 +44,7 @@ function Search(props) {
   } = props;
 
   useEffect(() => {
-
+    // if(query==='') setMvListClone([])
     setShow(true);
     //用了redux缓存，不再赘述
     console.log(hotList)
@@ -60,6 +56,7 @@ function Search(props) {
   const searchBack = useCallback(() => {
     setShow(false);
   }, []);
+ 
 
   const handleQuery = (q) => {
     // console.log(q);
@@ -67,15 +64,10 @@ function Search(props) {
     if(!q) return;
     getMultiMatch(q,page).then(res=>{
       if(res.code===200){
-        // console.log(res)
-        mvList2.push(...res.result.mvs)
-        // let mvList1=clonedeep(res.result.mvs)
-        // setMvList(res.result.mvs)
-        setTimeout(()=>{
-          setMvListClone(mvList2)
-        },600)
+          setMvList(res.result.mvs)
       }
           }).catch(err=>console.log(err))
+    
     changeEnterLoadingDispatch(true);
     getSuggestListDispatch(q);
   };
@@ -160,10 +152,10 @@ function Search(props) {
     return (
       <div>
         {
-          mvListClone.length===0?
+          mvList.length===0?
           null
           :
-          mvListClone.map((item, index, self) => {
+          mvList.map((item, index, self) => {
             return (
                   <ImgList onClick={()=>playMV(item.id,item.artistId)}  key={index}>
                       <MVInfo>
@@ -223,23 +215,6 @@ function Search(props) {
     musicNoteRef.current.startAnimation({x:e.nativeEvent.clientX, y:e.nativeEvent.clientY});
   }
   // =========================================================
-  // const  fetchMoreData = async() => {
-  //   if(judge!==permanent !==1)
-  //   return
-  //   const offset=(page+=1)*10
-  //   await getMultiMatch(query,offset).then(res=>{
-  //     if(res.code===200){
-  //       // console.log(res)
-  //       // setMvList(res.result.mvs)
-  //       mvList2.push(...res.result.mvs)
-  //     }
-  //         }).catch(err=>console.log(err))
-  //     setTimeout(()=>{
-  //       // console.log(mvList);
-  //     setMvListClone(mvList2)
-  //       judge=0;
-  //     },600)
-  // }
   return (
     <CSSTransition
       in={show}
@@ -267,16 +242,12 @@ function Search(props) {
       </ShortcutWrapper>
       <ShortcutWrapper show={query}>
       {
-        mvListClone.length===0 ? 
+        mvList.length===0 ? 
           null
           :
         <Scroll 
           onScroll={forceCheck}
           bounceBottom={true}
-          // pullUp={()=>{
-          //   judge++
-          //   fetchMoreData()
-          //   }}
         >
           <div>
             { renderSingers() }
