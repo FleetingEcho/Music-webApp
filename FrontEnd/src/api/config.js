@@ -66,7 +66,7 @@ class HttpRequest {
         if(config.method === 'get'){
          config.params = config.params || {};
          config.params["cookie"]=cookie;
-        //  config.params["proxy"]=`http://127.0.0.1:8080`
+        //  config.params["proxy"]=`http://121.196.226.246:84`
        };
 
         NProgress.start() //Set the loading progress bar (start...)

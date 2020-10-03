@@ -10,10 +10,6 @@ module.exports = (query, request) => {
     crypto: 'weapi',
     cookie: query.cookie,
     proxy: query.proxy,
-    // 103.126.92.132
-    // proxy: `http://113.100.209.125:3128`,
-    // proxy: `http://127.0.0.1:8080`,
     realIP: query.realIP,
-    // realIP: '113.100.209.125',
   })
 }

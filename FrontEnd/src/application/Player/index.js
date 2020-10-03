@@ -41,8 +41,6 @@ function Player(props) {
     fullScreen
   } = props;
   let { playing} =props
-
-
   const {
     togglePlayingDispatch,
     togglePlayListDispatch,
@@ -80,20 +78,27 @@ function Player(props) {
     // console.log(playList);
     songReady.current = false;
     let current = playList[currentIndex];
-    console.log(current);
+    // console.log(current);
     changeCurrentDispatch(current);
     setPreSong(current);
     setPlayingLyric("");
-    const link=getSongUrl(current.id)
-    audioRef.current.src = link;
-    // console.log('链接是'+link);
-    // console.log(audioRef);
-    audioRef.current.autoplay = true;
-    audioRef.current.playbackRate = speed;
+    // const link=getSongUrl(current.id)
+    getSongUrl(current.id).then(res=>{
+     let Link=res.data[0].url
+     audioRef.current.src = Link;
+     audioRef.current.autoplay = true;
+   audioRef.current.playbackRate = speed;
+      console.log(res.data[0].url)
+      // console.log(JSON.stringify(res.data));
+    }).catch(err=>{console.log(err);})
+
+    
     togglePlayingDispatch(true);
     getLyric(current.id);
     setCurrentTime(0);
     setDuration((current.dt / 1000) | 0);
+    // console.log('链接是'+getSongUrl(current.id));
+    // console.log(audioRef);
     // eslint-disable-next-line
   }, [currentIndex, playList]);
 

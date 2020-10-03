@@ -3,10 +3,18 @@ import axios from './instance';
 import {getCookie} from './utils'
 const cookie= getCookie()
 
-export const getSongUrl = id => {
-  return `https://music.163.com/song/media/outer/url?id=${id}.mp3`;
-};
-
+// export const getSongUrl = id => {
+//   return `https://music.163.com/song/media/outer/url?id=${id}.mp3`;
+// };
+export const getSongUrl=(id)=>{
+  return axios.request({
+    url:  '/song/url',
+    method: 'get',
+    params:{
+      id:id
+    }
+  })
+}
 export const getBannerRequest = () => {
   return axios.request({
     url:  '/banner?type=2',

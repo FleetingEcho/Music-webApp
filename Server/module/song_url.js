@@ -8,17 +8,20 @@ module.exports = (query, request) => {
   query.cookie.os = 'pc'
   const data = {
     ids: '[' + query.id + ']',
-    br: parseInt(query.br || 999000),
+    // ids: query.id,
+    // br: parseInt(query.br || 999000),
+    br: parseInt(query.br || 320000),
   }
   return request(
     'POST',
-    `https://music.163.com/api/song/enhance/player/url`,
+    `https://interface3.music.163.com/eapi/song/enhance/player/url`,
     data,
     {
-      crypto: 'linuxapi',
+      crypto: 'eapi',
       cookie: query.cookie,
       proxy: query.proxy,
       realIP: query.realIP,
-    }
+      url: '/api/song/enhance/player/url',
+    },
   )
 }

@@ -3,7 +3,7 @@
 module.exports = (query, request) => {
   const data = {
     offset: query.offset || 0,
-    limit: query.limit || 10,
+    limit: query.limit || 30,
   }
   return request(
     'POST',
@@ -14,6 +14,6 @@ module.exports = (query, request) => {
       cookie: query.cookie,
       proxy: query.proxy,
       realIP: query.realIP,
-    }
+    },
   )
 }
