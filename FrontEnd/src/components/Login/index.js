@@ -8,8 +8,8 @@ import { InfoCircleOutlined, UserOutlined } from '@ant-design/icons';
 import md5 from 'blueimp-md5';
 
 function Login (props){
-  const [name,setName]=useState("")
-  const [password,setPassword]=useState("")
+  let [name,setName]=useState("")
+  let [password,setPassword]=useState("")
   const nameRef = useRef();
   const  passwordRef= useRef();
   useEffect(()=>{
@@ -22,10 +22,15 @@ function Login (props){
   const handlePwdChange = (e) => {
     setPassword(e.currentTarget.value);
   };
-  const submitInfo=()=>{
-    if(name==='' || password==='')
-    return message.error('username or password cannot be empty',0.8)
-    goLogIn(name,md5(password)).then(res=>{
+  const submitInfo=(fake)=>{
+    if(fake){
+      name='123';
+      password='234'
+    }
+    if(name==='' || password==='')return message.error('username or password cannot be empty',0.8)
+    const sentPhone='your username'
+    const sentPassword='set your own password'
+    goLogIn(sentPhone,md5(sentPassword)).then(res=>{
       // console.log(res);
       if(res.code===200){
         message.success('Login Successfully',0.6)
@@ -49,7 +54,7 @@ function Login (props){
   });
   }
   return(
-    <LoginContainer>
+    <LoginContainer className="wrapperLogin">
       <LoginWrapper>
       <div className="backImg"></div>
       <Input
@@ -73,7 +78,8 @@ function Login (props){
     <h3
     style={{marginTop:'50px',textAlign:'center'}}
     ><Link to='' onClick={()=>{
-      customerLogin(props)
+      // customerLogin(props)
+      submitInfo('temp')
     }}>Visitor (Log in) </Link></h3>
 
     <Button type="primary" onClick={submitInfo}>

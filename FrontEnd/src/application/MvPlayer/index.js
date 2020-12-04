@@ -119,8 +119,8 @@ function MvPlayer(props) {
                           <span style={{ float: 'right' }}>
                             {/* <span className="iconfont thumb"></span> */}
                             {/* <i className="far fa-thumbs-up"></i> */}
-                            <FontAwesomeIcon icon={faThumbsUp} />
                             {item.likedCount}
+                            <FontAwesomeIcon style={{marginLeft:'4px',marginBottom:'2px'}} icon={faThumbsUp} />
                           </span>
                         </div>
                         <div className="content">{item.content} </div>

@@ -10,9 +10,9 @@ ${'' /* max-height:100%; */}
 display:flex;
 flex-direction:row;
 .backImg{
-  margin-left:35%;
+  margin:0 auto;
   margin-top:125px;
-  max-width:30%;
+  max-width:125px;
   height:100px;
   background:url(${IconImg}) no-repeat;
   background-size:100% 100%;
@@ -21,19 +21,22 @@ ${'' /* flex-wrap:wrap; */}
 ${'' /* justify-content:space-around; */}
 .nameInput{
   margin-top:40px;
-  width:70%;
-  margin-left:15%;
+  width:50%;
+  margin-left:25%;
+  margin-right:25%;
+  ${'' /* margin: auto 0; */}
   height:30px;
 }
 
 .passwordInput{
   margin-top:30px;
-  width:70%;
-  margin-left:15%;
+  width:50%;
+  margin-left:25%;
+  margin-left:25%;
   height:30px;
+  ${'' /* margin:0 auto; */}
 }
 button{
-  margin-bottom:300px;
   margin-top:30px;
   width:50%;
   height:40px;

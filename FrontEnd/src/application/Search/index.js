@@ -160,6 +160,7 @@ function Search(props) {
                   <ImgList onClick={()=>playMV(item.id,item.artistId)}  key={index}>
                       <MVInfo>
                         <img src={item.cover} width="40%" alt="music"
+                        style={{borderRadius:'10px'}}
                           onClick={()=>playMV(item.id,item.artistId)
                         }
                         />

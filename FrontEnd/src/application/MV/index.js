@@ -90,10 +90,10 @@ function MV(props) {
     })
     // props.history.push(`/play`)
   }
-
-  const fetchMoreData = () => {
-    if ((judge = judge1 === 1)) {
+  const fetchMoreData=()=>{
+    // if ((judge = judge1 === 1)) {
       if (channel === '最新') {
+        console.log('进入')
         mvList1 = []
         tabScroll = true
         loadingFlag = false
@@ -119,13 +119,30 @@ function MV(props) {
         loadingFlag = false
         flag = false
       }, 1000)
-    } else {
-      return
-    }
+    // } else {
+    //   return
+    // }
+
     // console.log(mvList);
     // console.log('mvList2长度'+mvList2.length);
     // {/* <Spin style={{ marginLeft: '50%' }} /> */}
   }
+  function throttle(fn, timeout, context){
+    //如果上次没调用过，直接调用
+    if(!fn.lastExec){
+      fn.lastExec = Date.now();
+      fn.call(context);
+    }else{
+      //如果调用过 --- 如果这次的调用时间超过了设置的设定好的timeout
+      var remaining = Date.now() - fn.lastExec;
+      if(remaining > timeout){
+        //新调用
+        fn.lastExec = Date.now();
+        fn.call(context);
+      }
+    };
+  }
+
   return (
     <Content play={songsCount}>
       {enterLoading && mvListClone.length === 0 ? (
@@ -133,12 +150,15 @@ function MV(props) {
       ) : (
         <Scroll
           bounceBottom={tabScroll}
-          onScroll={forceCheck}
+          onScroll={forceCheck()}
           pullUp={() => {
+            console.log('触底了')
             // loadingFlag=true;
             // flag=true;
-            judge1++
-            fetchMoreData()
+            // judge1++
+            throttle( fetchMoreData,100);
+            // throttle(500)
+            // fetchMoreData()
           }}
           // pullDownRefresh={true}
         >
@@ -151,8 +171,8 @@ function MV(props) {
                   centered
                 >
                   <TabPane tab="最新" key="最新"></TabPane>
-                  <TabPane tab="网易云" key="网易云"></TabPane>
                   <TabPane tab="全部" key="全部"></TabPane>
+                  <TabPane tab="网易云" key="网易云"></TabPane>
                 </Tabs>
               </ChannelItem>
             </div>

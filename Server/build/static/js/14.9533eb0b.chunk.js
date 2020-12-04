@@ -1,4 +1,4 @@
-(this.webpackJsonpcopy11=this.webpackJsonpcopy11||[]).push([[14],{370:function(e,t,a){"use strict";a.r(t);var l=a(0),n=a.n(l),o=a(45),i=a(63),r=a(7),s=a(155),c=a(107),p=a(73),d=a(4),u=a(2);const m=d.b.div`
+(this.webpackJsonpcopy11=this.webpackJsonpcopy11||[]).push([[14],{370:function(e,t,a){"use strict";a.r(t);var l=a(0),n=a.n(l),o=a(45),i=a(68),r=a(7),s=a(155),c=a(107),p=a(73),d=a(4),u=a(2);const m=d.b.div`
   position: fixed;
   top: 90px;
   bottom: ${e=>e.play>0?"60px":0};
