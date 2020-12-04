@@ -1,12 +1,12 @@
 # Music Web App
 
-**Online Address: http://45.77.27.87**
+**Online Address: https://fleetingsound.us**
 
 
 
-## Functions
+## Features
 
-- Netease Music user login, visitor login.
+- **Netease Music** user login, visitor login.
 
 - Recommended playlist  and carousels display.
 
@@ -16,6 +16,8 @@
 
 - Get popular singer information.
 
+- Lazy loading and automatic page turning
+
 - Watch the MV, browse the latest and hot comments.
 
 - Play the song, adjust the progress, view the lyrics and adjust the waitlist.
@@ -24,11 +26,11 @@
 
 ## Stack
 
-Front End:   React + Redux + Antd UI+ CSS-IN-JS +CREATE-KEYFRAME-ANIMATION
+Front End:   **React + Redux + Antd UI+ CSS-IN-JS +CREATE-KEYFRAME-ANIMATION**
 
-Server:    NeteaseCloudMusicApi ( from Github repositories )
+Server:    [NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi) ( from Github repositories )
 
-
+Deployment: **Nginx & Node**
 
 ## Installation & Run
 
@@ -66,7 +68,6 @@ Server:    NeteaseCloudMusicApi ( from Github repositories )
 4. About access permission:
    + If you are Netease Music user, besides the user Login, it is needed to set proxy in the Server Files. (See [Netease API ](https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=%e5%8f%af%e4%bb%a5%e4%bd%bf%e7%94%a8%e4%bb%a3%e7%90%86) )
    + For paid songs and geographic restricted songs, visitors are not authorized to access.
-
 
 
 
