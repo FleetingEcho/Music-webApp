@@ -1,6 +1,6 @@
 # Music Web App
 
-**Online Address: https://fleetingsound.us**
+**Online Address: https://www.fleetingsound.us**
 
 
 
@@ -10,17 +10,17 @@
 
 - Recommended playlist  and carousels display.
 
-- Search page (Singer, MV, and Album)
+- Comprehensive information retrieval (Singer,Song, MV, and Album)
 
 - MV List (Options: Popular, Latest and Netease exclusive MV)
 
-- Get popular singer information.
+- The latest music list recommendation.(such as Billboard,itunes, and ACG)
 
-- Lazy loading and automatic page turning
+- Lazy loading and AutoPager.
 
-- Watch the MV, browse the latest and hot comments.
+- Latest MV & hot comments.
 
-- Play the song, adjust the progress, view the lyrics and adjust the waitlist.
+- Song player supports  to adjust the progress, view the lyrics and modify the waitlist.
 
   
 
@@ -66,8 +66,20 @@ Deployment: **Nginx & Node**
    ```
 
 4. About access permission:
-   + If you are Netease Music user, besides the user Login, it is needed to set proxy in the Server Files. (See [Netease API ](https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=%e5%8f%af%e4%bb%a5%e4%bd%bf%e7%94%a8%e4%bb%a3%e7%90%86) )
+   + If you are Netease Music user, besides the user Login, it is needed to set proxy in the Server Files. (Please check [Netease API ](https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=%e5%8f%af%e4%bb%a5%e4%bd%bf%e7%94%a8%e4%bb%a3%e7%90%86) )
    + For paid songs and geographic restricted songs, visitors are not authorized to access.
+
+5. **Attention**
+
+   + For personal use, it is needed to modify your info. Please check the code in /FrontEnd/src/components/Login/index.js , about line 31 &32. 
+
+   + ```js
+         const sentPhone='your username'
+         const sentPassword='set your own password'
+     ```
+
+     
+
 
 
 
